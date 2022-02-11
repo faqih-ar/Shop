@@ -1,0 +1,25 @@
+1. Install Laravel
+2. Install Authentication
+	composer require laravel/ui "^1.0" --dev
+
+	php artisan ui vue --auth
+
+	npm install && npm run dev
+3. Create Migration
+	php artisan make:migration create_[nama tabel]_table
+	php artisan make:migration add_[nama foreign key]_to_[nama tabel]_table
+
+4. Migration
+	php artisan migrate
+
+5. Create Controller dan Model
+	php artisan make:controller [nama controller] --model=[nama model]
+
+6. Edit Model
+	Fillable dan relation
+
+7. Edit Controller
+
+8. Edit Route di web.php
+
+9. Edit Blade Untuk Tampilan
