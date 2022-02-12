@@ -16,8 +16,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+//Admin
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+//User
+Route::get('/home', 'HomeController@index');
 Route::get('/logout', 'HomeController@logout');
 
 Route::get('/profile', 'ProfilController@index');

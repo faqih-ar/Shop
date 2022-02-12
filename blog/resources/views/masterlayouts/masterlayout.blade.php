@@ -75,7 +75,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset('assets/'.$user->profil->photo)}}" alt="user" class="rounded-circle" width="31">
+                                <img src="{{ asset('assets/'.$user->profil->photo)}}" alt="user" style="width: 30px; height: 30px;" class="rounded-circle" width="31">
                                 <span class="px-3">{{ $user->name }}</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
