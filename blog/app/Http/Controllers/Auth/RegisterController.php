@@ -73,7 +73,7 @@ class RegisterController extends Controller
 
         Profil::create([
             'shipping_address' => '',
-            'photo' => '',
+            'photo' => 'default_photo.jpg',
             'phone_number' => '',
             'user_id' => User::where('email', '=', $data['email'])->first()->id,
         ]);

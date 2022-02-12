@@ -15,7 +15,6 @@
                         href="pages-profile.html" aria-expanded="false"><i
                             class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span></a></li>
             </ul>
-
         </nav>
         <!-- End Sidebar navigation -->
     </div>
@@ -52,16 +51,28 @@
     <!-- ============================================================== -->
     <div class="container-fluid" style="padding: 10px 25px">
         <hr/>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
         <div class="row">
             <div class="col-4">
                 <div class="card">
-                    <img src="{{ asset('assets/default_photo.jpg')}}" class="rounded">
+                    <img src="{{ asset('assets/'.$user->profil->photo)}}" class="rounded">
                     <div class="card-body">
-                        <form method="POST" class="mt-1 form-group">
-                            <input type="file" name="photo_profile" accept="image/*" class="btn btn-light">
+                        <form method="POST" class="mt-1 form-group" enctype="multipart/form-data" action="/profil/{{$user->id}}/updatePhoto">
+                            @method('put')
+                            @csrf
+                            <input type="file" name="file" accept="image/*" class="btn btn-light">
                             <center>
                                 <input type="submit" name="submit" class="btn btn-primary mt-2 px-5" value="Update">
                             </center>
@@ -72,19 +83,17 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" class="form-group">
+                        <form method="POST" class="form-group" action="/profile/{{ $user->id }}">
+                            @method('put')
+                            @csrf
                             <label for="name" class="mt-2">Nama Lengkap :</label>
-                            <input type="text" name="name" class="form-control" id="name" value="Faqih Auliyaur R" style="outline: 0; border-width: 0 0 1px; border-color: grey">
+                            <input type="text" name="name" class="form-control" id="name" value="{{ $user->name  }}" style="outline: 0; border-width: 0 0 1px; border-color: grey">
                             <label for="email" class="mt-2">Email :</label>
-                            <input type="email" name="email" class="form-control" id="email" value="faqih@faqih.com" style="outline: 0; border-width: 0 0 1px; border-color: grey">
-                            <label for="password" class="mt-2">Password :</label>
-                            <input type="password" name="password" class="form-control" id="password" value="asaulter123" style="outline: 0; border-width: 0 0 1px; border-color: grey">
+                            <input type="email" name="email" class="form-control" id="email" value="{{ $user->email }}" style="outline: 0; border-width: 0 0 1px; border-color: grey">
                             <label for="phone_number" class="mt-2">Nomor Telepon :</label>
-                            <input type="text" name="phone" class="form-control" id="phone_number" value="0811111111" style="outline: 0; border-width: 0 0 1px; border-color: grey">
+                            <input type="text" name="phone" class="form-control" id="phone_number" value="{{ $user->profil->phone_number }}" style="outline: 0; border-width: 0 0 1px; border-color: grey">
                             <label for="alamat" class="mt-2">Alamat :</label>
-                            <textarea id="alamat" name="alamat" row="2" class="form-control" style="outline: 0; border-width: 0 0 1px; border-color: grey; resize:none;">
-
-                            </textarea>
+                            <input type="text" id="alamat" name="alamat" class="form-control" value="{{ $user->profil->shipping_address }}" style="outline: 0; border-width: 0 0 1px; border-color: grey; resize:none;">
                             <center>
                                 <input type="submit" name="update" class="btn btn-primary mt-4 px-5" value="Update">
                             </center>

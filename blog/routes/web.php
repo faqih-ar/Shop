@@ -18,5 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'HomeController@logout');
 
 Route::get('/profile', 'ProfilController@index');
+Route::put('/profile/{id}', 'ProfilController@edit');
+Route::put('/profil/{id}/updatePhoto', 'ProfilController@updateImage');
